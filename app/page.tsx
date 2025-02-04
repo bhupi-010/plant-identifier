@@ -13,7 +13,7 @@ export default function Home() {
   const [loading, setLoading] = useState<boolean>(false);
 
   return (
-    <main className="min-h-screen bg-gradient-to-br from-green-700 to-green-900 p-8">
+    <main className="min-h-screen bg-gradient-to-br from-[#2e7d32] to-[#795548] p-8">
       <div className="max-w-4xl mx-auto">
         <h1 className="text-5xl font-bold text-center mb-8 text-white drop-shadow-md">
           Plant Identifier
