@@ -28,21 +28,36 @@ export default function PlantInfo({ info, imageUrl }: PlantInfoProps) {
           </p>
         </div>
       </div>
-      <div className="bg-green-50 rounded-lg p-6 mb-6 mt-6">
-        <Table info={info} />
-      </div>
-      <div className="mt-8">
-        <h3 className="text-2xl font-semibold mb-4 text-green-600">
-          Care Instructions
-        </h3>
-        <p className="text-gray-700 leading-relaxed">{info.careInstructions}</p>
-      </div>
-      <div className="mt-8">
-        <h3 className="text-2xl font-semibold mb-4 text-green-600">
-          Medicinal Value
-        </h3>
-        <p className="text-gray-700 leading-relaxed">{info.medicinalValue}</p>
-      </div>
+      {(info?.scientificName || info?.family || info?.nativeRegion) && (
+        <div className="bg-green-50 rounded-lg p-6 mb-6 mt-6">
+          <Table info={info} />
+        </div>
+      )}
+      {info.careInstructions && (
+        <>
+          <div className="mt-8">
+            <h3 className="text-2xl font-semibold mb-4 text-green-600">
+              Care Instructions
+            </h3>
+            <p className="text-gray-700 leading-relaxed">
+              {info.careInstructions}
+            </p>
+          </div>
+        </>
+      )}
+      {info.medicinalValue && (
+        <>
+          {" "}
+          <div className="mt-8">
+            <h3 className="text-2xl font-semibold mb-4 text-green-600">
+              Medicinal Value
+            </h3>
+            <p className="text-gray-700 leading-relaxed">
+              {info.medicinalValue}
+            </p>
+          </div>
+        </>
+      )}
     </div>
   );
 }

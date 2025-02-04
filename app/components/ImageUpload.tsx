@@ -17,8 +17,9 @@ const genAI = new GoogleGenerativeAI(
 export default function ImageUpload({
   setPlantInfo,
   setImageUrl,
+  loading,
+  setLoading,
 }: ImageUploadProps) {
-  const [loading, setLoading] = useState<boolean>(false);
   const fileInputRef = useRef<HTMLInputElement>(null);
   const cameraInputRef = useRef<HTMLInputElement>(null);
 

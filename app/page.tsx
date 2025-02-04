@@ -10,6 +10,7 @@ import { PlantInfoType } from "@/types/types";
 export default function Home() {
   const [plantInfo, setPlantInfo] = useState<PlantInfoType | null>(null);
   const [imageUrl, setImageUrl] = useState<string | null>(null);
+  const [loading, setLoading] = useState<boolean>(false);
 
   return (
     <main className="min-h-screen bg-gradient-to-br from-green-700 to-green-900 p-8">
@@ -22,8 +23,15 @@ export default function Home() {
           any plant, and our AI will identify it and provide valuable
           information.
         </p>
-        <ImageUpload setPlantInfo={setPlantInfo} setImageUrl={setImageUrl} />
-        {plantInfo && <PlantInfo info={plantInfo} imageUrl={imageUrl} />}
+        <ImageUpload
+          setPlantInfo={setPlantInfo}
+          setImageUrl={setImageUrl}
+          loading={loading}
+          setLoading={setLoading}
+        />
+        {!loading && plantInfo && (
+          <PlantInfo info={plantInfo} imageUrl={imageUrl} />
+        )}
         <FeatureCard />
       </div>
       <Footer />
